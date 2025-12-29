@@ -1,7 +1,16 @@
-assets/biblia/index.json
-assets/biblia/acf/genesis.json
-assets/biblia/apocrifos/tobias.json
-
-lib/core/bible_repository.dart
-lib/features/sermon_generator/book_list_page.dart
-lib/features/sermon_generator/chapter_page.dart
+{
+  "acf": [
+    {
+      "id": "genesis",
+      "nome": "Gênesis",
+      "arquivo": "assets/biblia/acf/genesis.json"
+    }
+  ],
+  "apocrifos": [
+    {
+      "id": "tobias",
+      "nome": "Tobias",
+      "arquivo": "assets/biblia/apocrifos/tobias.json"
+    }
+  ]
+}
