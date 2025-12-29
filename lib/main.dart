@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
-import 'features/sermon_generator/sermon_page.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+class BibleRepository {
+  static Future<Map<String, dynamic>> carregarIndex() async {
+    final data = await rootBundle.loadString('assets/biblia/index.json');
+    return json.decode(data);
+  }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SermonPage(),
-    );
+  static Future<Map<String, dynamic>> carregarLivro(String caminho) async {
+    final data = await rootBundle.loadString(caminho);
+    return json.decode(data);
   }
 }
