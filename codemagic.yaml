@@ -4,9 +4,6 @@ workflows:
     environment:
       flutter: stable
     scripts:
-      - name: Criar estrutura Android
-        script: |
-          flutter create .
       - name: Obter dependências
         script: |
           flutter pub get
