@@ -1,20 +1,46 @@
 import 'package:flutter/material.dart';
-import 'features/sermon_generator/book_list_page.dart';
+import '../../core/bible_repository.dart';
+import 'chapter_page.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BookListPage extends StatelessWidget {
+  const BookListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Pregador Bíblico',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const BookListPage(),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Livros Bíblicos')),
+      body: FutureBuilder(
+        future: BibleRepository.carregarIndex(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          final data = snapshot.data as Map<String, dynamic>;
+          final livros = [...data['acf'], ...data['apocrifos']];
+
+          return ListView.builder(
+            itemCount: livros.length,
+            itemBuilder: (context, index) {
+              final livro = livros[index];
+              return ListTile(
+                title: Text(livro['nome']),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => ChapterPage(
+                        livro['arquivo'],
+                        livro['nome'],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
