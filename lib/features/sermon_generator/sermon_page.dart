@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'features/sermon_generator/book_list_page.dart';
 
-class SermonPage extends StatelessWidget {
-  const SermonPage({super.key});
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Pregador Bíblico')),
-      body: const Center(
-        child: Text(
-          'Projeto base do Pregador Bíblico',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Pregador Bíblico',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const BookListPage(),
     );
   }
 }
