@@ -1,19 +1,24 @@
 name: pregador_biblico
-description: Biblia com gerador de sermoes
+description: Aplicativo bíblico com gerador de sermões
+publish_to: 'none'
+
 version: 1.0.0+1
+
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=2.17.0 <4.0.0"
+
 dependencies:
   flutter:
     sdk: flutter
-  http: ^1.2.0
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
 flutter:
   uses-material-design: true
-flutter:
-  uses-material-design: true
+
   assets:
     - assets/biblia/
-  home: const BookListPage(),
-import 'features/sermon_generator/book_list_page.dart';
-
-
